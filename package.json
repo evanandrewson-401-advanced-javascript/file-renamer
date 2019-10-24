@@ -1,0 +1,25 @@
+{
+  "name": "file-renamer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "file-renamer.js",
+  "scripts": {
+    "test": "jest --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evanandrewson-401-advanced-javascript/file-renamer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evanandrewson-401-advanced-javascript/file-renamer/issues"
+  },
+  "homepage": "https://github.com/evanandrewson-401-advanced-javascript/file-renamer#readme",
+  "dependencies": {
+    "eslint": "^6.5.1",
+    "file-system": "^2.2.2",
+    "jest": "^24.9.0"
+  }
+}
