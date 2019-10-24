@@ -1,14 +1,19 @@
-const { readDir } = require('../file-renamer');
+const { getPaths, readFile } = require('../file-renamer');
+
+const path = './files'
 
 describe('File renamer', () => {
   it('gets an array of the file names', () => {
-    const path = './files'
-    expect(readDir(path)).toEqual([
-      '1.txt', '10.txt',
-      '2.txt', '3.txt',
-      '4.txt', '5.txt',
-      '6.txt', '7.txt',
-      '8.txt', '9.txt'
+    expect(getPaths(path)).toEqual([
+      './files/1.txt', './files/10.txt',
+      './files/2.txt', './files/3.txt',
+      './files/4.txt', './files/5.txt',
+      './files/6.txt', './files/7.txt',
+      './files/8.txt', './files/9.txt'
     ]);
   });
+  // it('gets an array of the file contents', () => {
+  //   const files = readDir(path);
+  //   expect(files.map(readFile)).toEqual
+  // })
 })

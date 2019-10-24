@@ -1,13 +1,20 @@
-const fs = require('file-system');
+const fs = require('file-system').promises;
 
-const readDir = path => {
-  return fs.readdirSync(path);
+// .map(entry => './files/' + entry)
+
+const getPaths = path => {
+  return fs.readdir(path)
+    .then(files => {
+      return files.map(entry => './files/' + entry)
+    });
 }
 
-// const readFile = path => {
+const readFile = path => {
+  return fs.readFileSync(path);
+}
 
-// }
+getPaths('./files').then(files => {
+  console.log(files);
+})
 
-console.log(readDir('./files'));
-
-module.exports = { readDir }
+module.exports = { getPaths, readFile }
