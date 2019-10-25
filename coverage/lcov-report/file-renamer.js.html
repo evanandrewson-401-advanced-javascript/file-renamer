@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">46.15% </span>
+        <span class="strong">41.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/13</span>
+        <span class='fraction'>10/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">13.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>2/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">54.55% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/11</span>
+        <span class='fraction'>10/20</span>
       </div>
     </div>
     <p class="quiet">
@@ -89,7 +89,38 @@
 <a name='L41'></a><a href='#L41'>41</a>
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
-<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -109,6 +140,27 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,10 +186,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const fs = require('file-system').promises;
 &nbsp;
-// .map(entry =&gt; './files/' + entry)
+const getFileNumbers = directory =&gt; {
+  return fs.readdir(directory)
+    .then(<span class="fstat-no" title="function not covered" >fi</span>les =&gt; {
+<span class="cstat-no" title="statement not covered" >      return files.map(<span class="fstat-no" title="function not covered" >en</span>try =&gt; <span class="cstat-no" title="statement not covered" >entry.slice(0, entry.length - 4))</span></span>
+    });
+}
 &nbsp;
-const getPaths = path =&gt; {
-  return fs.readdir(path)
+const getPaths = directory =&gt; {
+  return fs.readdir(directory)
     .then(<span class="fstat-no" title="function not covered" >fi</span>les =&gt; {
 <span class="cstat-no" title="statement not covered" >      return files.map(<span class="fstat-no" title="function not covered" >en</span>try =&gt; <span class="cstat-no" title="statement not covered" >'./files/' + entry)</span></span>
     });
@@ -155,6 +212,27 @@ const getTimestamps = <span class="fstat-no" title="function not covered" >pa</s
       });
   }));
 }
+&nbsp;
+const rename = <span class="fstat-no" title="function not covered" >(p</span>athArray, contentsArray, timestampsArray) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return Promise.all(pathArray.forEach(<span class="fstat-no" title="function not covered" >(f</span>ile, index) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    fs.rename(file, `${contentsArray[index]}-${OLD_FILE_NUMBER}-${timestampsArray[index]}`, <span class="fstat-no" title="function not covered" >er</span>r =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      if(err) {</span>
+<span class="cstat-no" title="statement not covered" >        throw err</span>
+      }
+    })
+  }))
+}
+&nbsp;
+getFileNumbers('./files').then(<span class="fstat-no" title="function not covered" >fi</span>lenumbers =&gt; <span class="cstat-no" title="statement not covered" >console.log(filenumbers))</span>;
+&nbsp;
+// getPaths('./files')
+//       .then(files =&gt; {
+//         console.log(files);
+//         return rename(files);
+//       })
+//       .then((indices) =&gt; {
+//         console.log(indices);
+//       });
 &nbsp;
 // getPaths('./files')
 //       .then(files =&gt; {
@@ -175,13 +253,13 @@ const getTimestamps = <span class="fstat-no" title="function not covered" >pa</s
 //       });
       
 &nbsp;
-module.exports = { getPaths, getContents, getTimestamps };</pre></td></tr>
+module.exports = { getFileNumbers, getPaths, getContents, getTimestamps };</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 24 2019 19:12:50 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 24 2019 19:35:26 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="prettify.js"></script>

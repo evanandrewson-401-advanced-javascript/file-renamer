@@ -1,9 +1,14 @@
 const fs = require('file-system').promises;
 
-// .map(entry => './files/' + entry)
+const getFileNumbers = directory => {
+  return fs.readdir(directory)
+    .then(files => {
+      return files.map(entry => entry.slice(0, entry.length - 4))
+    });
+}
 
-const getPaths = path => {
-  return fs.readdir(path)
+const getPaths = directory => {
+  return fs.readdir(directory)
     .then(files => {
       return files.map(entry => './files/' + entry)
     });
@@ -21,6 +26,27 @@ const getTimestamps = pathArray => {
       });
   }));
 }
+
+const rename = (pathArray, contentsArray, timestampsArray) => {
+  return Promise.all(pathArray.forEach((file, index) => {
+    fs.rename(file, `${contentsArray[index]}-${OLD_FILE_NUMBER}-${timestampsArray[index]}`, err => {
+      if(err) {
+        throw err
+      }
+    })
+  }))
+}
+
+getFileNumbers('./files').then(filenumbers => console.log(filenumbers));
+
+// getPaths('./files')
+//       .then(files => {
+//         console.log(files);
+//         return rename(files);
+//       })
+//       .then((indices) => {
+//         console.log(indices);
+//       });
 
 // getPaths('./files')
 //       .then(files => {
@@ -41,4 +67,4 @@ const getTimestamps = pathArray => {
 //       });
       
 
-module.exports = { getPaths, getContents, getTimestamps };
+module.exports = { getFileNumbers, getPaths, getContents, getTimestamps };

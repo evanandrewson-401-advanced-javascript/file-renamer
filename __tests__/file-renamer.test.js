@@ -1,10 +1,21 @@
-const { getPaths, getContents, getTimestamps } = require('../file-renamer');
+const { getFileNumbers, getPaths, getContents, getTimestamps } = require('../file-renamer');
 
-const path = './files'
+const directory = './files'
 
 describe('File renamer', () => {
+  it('gets an array of the file numbers', () => {
+    getFileNumbers('./files')
+      .then(fileNumbers => {
+        expect(fileNumbers).toEqual([
+          '1', '10', '2',
+          '3', '4',  '5',
+          '6', '7',  '8',
+          '9'
+        ])
+      });
+  })
   it('gets an array of the file names', () => {
-    getPaths(path)
+    getPaths(directory)
     .then(files => {
       expect(files).toEqual([
         './files/1.txt', './files/10.txt',
@@ -16,7 +27,7 @@ describe('File renamer', () => {
     });
   });
   it('gets an array of the file contents', () => {
-    getPaths(path)
+    getPaths(directory)
       .then(files => {
         return getContents(files);
       })
@@ -36,7 +47,7 @@ describe('File renamer', () => {
       });
   });
   it('gets an array of the timestamps', () => {
-    getPaths(path)
+    getPaths(directory)
       .then(files => {
         return getTimestamps(files);
       })
