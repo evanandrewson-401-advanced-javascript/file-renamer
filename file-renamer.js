@@ -9,12 +9,18 @@ const getPaths = path => {
     });
 }
 
-const readFile = path => {
-  return fs.readFileSync(path);
+const getContents = pathArray => {
+  return Promise.all(pathArray.map(path => fs.readFile(path, { encoding: 'utf8' })));
 }
 
-getPaths('./files').then(files => {
-  console.log(files);
-})
+// getPaths('./files')
+//       .then(files => {
+//         console.log(files);
+//         return getContents(files);
+//       })
+//       .then((contents) => {
+//         console.log(contents);
+//       });
+      
 
-module.exports = { getPaths, readFile }
+module.exports = { getPaths, getContents };
