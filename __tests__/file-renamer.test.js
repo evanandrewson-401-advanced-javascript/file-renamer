@@ -1,4 +1,4 @@
-const { getPaths, getContents } = require('../file-renamer');
+const { getPaths, getContents, getTimestamps } = require('../file-renamer');
 
 const path = './files'
 
@@ -34,5 +34,25 @@ describe('File renamer', () => {
           'nine'
         ])
       });
+  });
+  it('gets an array of the timestamps', () => {
+    getPaths(path)
+      .then(files => {
+        return getTimestamps(files);
+      })
+      .then(results => {
+        expect(results).toEqual([
+          '2019-10-24T22:43:19.602Z',
+          '2019-10-24T22:43:51.901Z',
+          '2019-10-24T22:43:22.466Z',
+          '2019-10-24T22:43:25.670Z',
+          '2019-10-24T22:43:27.766Z',
+          '2019-10-24T22:43:30.170Z',
+          '2019-10-24T22:43:32.542Z',
+          '2019-10-24T22:43:39.233Z',
+          '2019-10-24T22:43:44.137Z',
+          '2019-10-24T22:43:48.297Z'
+        ])
+      })
   })
 })

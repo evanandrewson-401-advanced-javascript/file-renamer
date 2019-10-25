@@ -13,6 +13,24 @@ const getContents = pathArray => {
   return Promise.all(pathArray.map(path => fs.readFile(path, { encoding: 'utf8' })));
 }
 
+const getTimestamps = pathArray => {
+  return Promise.all(pathArray.map(path => {
+    return fs.stat(path)
+      .then(stats => {
+        return stats.mtime;
+      });
+  }));
+}
+
+// getPaths('./files')
+//       .then(files => {
+//         console.log(files);
+//         return getTimestamps(files);
+//       })
+//       .then((timestamps) => {
+//         console.log(timestamps);
+//       });
+
 // getPaths('./files')
 //       .then(files => {
 //         console.log(files);
@@ -23,4 +41,4 @@ const getContents = pathArray => {
 //       });
       
 
-module.exports = { getPaths, getContents };
+module.exports = { getPaths, getContents, getTimestamps };
