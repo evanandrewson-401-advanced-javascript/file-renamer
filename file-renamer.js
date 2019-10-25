@@ -37,6 +37,22 @@ const rename = (pathArray, fileNumberArray, contentsArray, timestampsArray) => {
   }))
 }
 
+const fileRenamer = directory => {
+  return getFileNumbers(directory)
+    .then(fileNumbers => {
+      return getPaths(directory)
+        .then(filePaths => {
+          return getContents(filePaths)
+        })
+          .then(fileContents => {
+            return getTimestamps(filePaths)
+          })
+            .then(timestamps => {
+              return rename(filePaths, fileNumbers, fileContents, timestamps)
+            })
+    });
+}
+
 // getFileNumbers('./files').then(filenumbers => console.log(filenumbers));
 
 // getPaths('./files')
