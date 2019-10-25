@@ -27,9 +27,9 @@ const getTimestamps = pathArray => {
   }));
 }
 
-const rename = (pathArray, contentsArray, timestampsArray) => {
+const rename = (pathArray, fileNumberArray, contentsArray, timestampsArray) => {
   return Promise.all(pathArray.forEach((file, index) => {
-    fs.rename(file, `${contentsArray[index]}-${OLD_FILE_NUMBER}-${timestampsArray[index]}`, err => {
+    fs.rename(file, `${contentsArray[index]}-${fileNumberArray[index]}-${timestampsArray[index]}`, err => {
       if(err) {
         throw err
       }
@@ -37,7 +37,7 @@ const rename = (pathArray, contentsArray, timestampsArray) => {
   }))
 }
 
-getFileNumbers('./files').then(filenumbers => console.log(filenumbers));
+// getFileNumbers('./files').then(filenumbers => console.log(filenumbers));
 
 // getPaths('./files')
 //       .then(files => {
