@@ -31,10 +31,10 @@ const rename = (pathArray, fileNumberArray, contentsArray, timestampsArray) => {
   return Promise.all(pathArray.forEach((file, index) => {
     fs.rename(file, `${contentsArray[index]}-${fileNumberArray[index]}-${timestampsArray[index]}`, err => {
       if(err) {
-        throw err
+        throw err;
       }
-    })
-  }))
+    });
+  }));
 }
 
 const fileRenamer = directory => {
@@ -43,15 +43,17 @@ const fileRenamer = directory => {
       return getPaths(directory)
         .then(filePaths => {
           return getContents(filePaths)
-        })
-          .then(fileContents => {
-            return getTimestamps(filePaths)
-          })
-            .then(timestamps => {
-              return rename(filePaths, fileNumbers, fileContents, timestamps)
+            .then(fileContents => {
+              return getTimestamps(filePaths)
+                .then(timestamps => {
+                  return rename(filePaths, fileNumbers, fileContents, timestamps)
+                })
             })
+        })
     });
 }
+
+fileRenamer('./files');
 
 // getFileNumbers('./files').then(filenumbers => console.log(filenumbers));
 
