@@ -40,13 +40,17 @@ const rename = (pathArray, fileNumberArray, contentsArray, timestampsArray) => {
 const fileRenamer = directory => {
   return getFileNumbers(directory)
     .then(fileNumbers => {
+      console.log(fileNumbers);
       return getPaths(directory)
         .then(filePaths => {
+          console.log(filePaths);
           return getContents(filePaths)
             .then(fileContents => {
+              console.log(fileContents);
               return getTimestamps(filePaths)
                 .then(timestamps => {
-                  return rename(filePaths, fileNumbers, fileContents, timestamps)
+                  console.log(timestamps)
+                  // return rename(filePaths, fileNumbers, fileContents, timestamps)
                 })
             })
         })
