@@ -29,7 +29,7 @@ const getTimestamps = pathArray => {
 
 const rename = (pathArray, fileNumberArray, contentsArray, timestampsArray) => {
   return Promise.all(pathArray.forEach((file, index) => {
-    fs.rename(file, `${contentsArray[index]}-${fileNumberArray[index]}-${timestampsArray[index]}`, err => {
+    fs.rename(file, `./files/${contentsArray[index]}-${fileNumberArray[index]}-${timestampsArray[index]}`, err => {
       if(err) {
         throw err;
       }
@@ -50,7 +50,7 @@ const fileRenamer = directory => {
               return getTimestamps(filePaths)
                 .then(timestamps => {
                   console.log(timestamps)
-                  // return rename(filePaths, fileNumbers, fileContents, timestamps)
+                  return rename(filePaths, fileNumbers, fileContents, timestamps)
                 })
             })
         })
